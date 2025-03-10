@@ -9,24 +9,23 @@ Az inicializálás után a 3db adatbázis tábla tartalmazza egy [WHMCS](https:/
 - `data/schemaA.sql` és `data/schemaB.sql` file-ok tartalmazzák az adatstruktúrákat
 - faker használata nem kötelező, a feladat megoldható a struktúra adatokkal való feltöltése nélkül is
 - package manager használata javasolt
-- [WHMCS 8](https://www.whmcs.com/) kompatibils env és ORM használata (mivel a WHMCS license köteles feladat, ezért csak az ORM használata)
+- [WHMCS 8](https://www.whmcs.com/) kompatibils env és ORM használata (mivel a WHMCS license köteles, ezért csak az ORM használatára van szükség)
 
 ## Követelmények
 
-- [ ] a későbbi migrációs táblákra való kibővíthetőség miatt szervezze ki külön file-be a rekurzív feladatokat
-- [ ] egyes táblákhoz a WHMCS-ben már létrehoztak [Internal Class](https://classdocs.whmcs.com/8.12/index.html)-okat melyekből származtatnánk a migrálandó táblákoz kapcsolodó class-okat, ezért ne használjon absztrakt, leszármaztott osztályokat
-- [ ] mivel a migrálandó táblákoz tartozó class-ok esetén törekedni kell az elfogadott desing pattern betartására, ezért szervezze ki külön file-ba a class iránti elvárásokat
+- [ ] a későbbi migrációs táblákra való kibővíthetőség miatt szempont a rekurzív feladatok külön file-ba kiszervezése, de az egyes táblákhoz a WHMCS-ben már létrehoztak [Internal Class](https://classdocs.whmcs.com/8.12/index.html)-okat melyekből származtatnánk a migrálandó táblákoz kapcsolodó osztályokat, ezért kerülni kell az absztrakt és/vagy leszármaztott osztályokat
+- [ ] mivel a migrálandó táblákoz tartozó class-ok esetén ragaszkodni kell az elfogadott desing pattern betartásához, ezért a class iránti elvárásokat külön file-ban kell definiálni
 
 ## Benyújtás
 
 - [ ] `src/` mappába kerüljenek a source file-ok
 - [ ] a `php migration_prepare.php` file hívásával legyen futtatható az implementáció
-- [ ] külön dokumentáció készítésére nincs szükség, az elkészült kódot dokumentálja, ahogyan és amennyire azt éles munkakörnyezetben tenné
+- [ ] külön dokumentáció készítésére nincs szükség, az elkészült kódot elég annotáció szintjén dokumentálni
 
 ## Q & A  
 
-- Milyen IDE-t, tool-t használt a megoldáshoz?
-- Honnan szerezte be az esetleges hiányzó infót?
-- Körülbelül mennyi idő kellett a megoldáshoz?
-- Találkozott olyan fogalommal, megoldással a feladat implementálása közben, ami eddigi karrierje során nem jelent meg? Mi volt az?
+- Milyen IDE-t, tool-t használtál a megoldáshoz?
+- Honnan szerezted be az esetleges hiányzó infót?
+- Körülbelül mennyi időre volt szükség a megoldáshoz?
+- Találkoztál olyan fogalommal, megoldással a feladat implementálása közben, ami eddigi karriered során nem jelent meg? Mi volt az?
 - Volt olyan rész, ami nehézséget okozott? Miért?
