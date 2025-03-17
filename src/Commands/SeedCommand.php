@@ -1,6 +1,6 @@
 <?php
 
-require 'bootstrap.php';
+require '../Config/bootstrap.php';
 use Seeders\ClientSeeder;
 use Seeders\UserClientSeeder;
 use Seeders\UserSeeder;
