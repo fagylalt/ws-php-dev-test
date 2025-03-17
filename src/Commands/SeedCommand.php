@@ -10,8 +10,13 @@ class SeedCommand
 {
     public static function run(): void
     {
-        ClientSeeder::seed(10);
-        UserSeeder::seed(10);
-        UserClientSeeder::seed();
+        try {
+            ClientSeeder::seed(10);
+            UserSeeder::seed(10);
+            UserClientSeeder::seed();
+        }catch (\Exception $e){
+            echo 'Seed failed: '.$e->getMessage()."\n";
+        }
+
     }
 }
