@@ -1,15 +1,17 @@
 <?php
 
-require '../Config/bootstrap.php';
+namespace Commands;
+
 use Seeders\ClientSeeder;
 use Seeders\UserClientSeeder;
 use Seeders\UserSeeder;
 
-ClientSeeder::seed(10);
-echo "Seeded 10 clients\n";
-
-UserSeeder::seed(10);
-echo "Seeded 10 users\n";
-
-UserClientSeeder::seed();
-echo "Seeded 10 user-client relationships\n";
+class SeedCommand
+{
+    public static function run(): void
+    {
+        ClientSeeder::seed(10);
+        UserSeeder::seed(10);
+        UserClientSeeder::seed();
+    }
+}

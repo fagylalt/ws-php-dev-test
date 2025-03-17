@@ -1,13 +1,19 @@
 <?php
 
-require_once '../Config/bootstrap.php';
+namespace Commands;
 
 use Database\Database;
 use Migrations\SchemaMigrator;
 
-$migrator = new SchemaMigrator(
-    Database::getInstance()->getConnection(getenv('SOURCE_DATABASE')),
-    Database::getInstance()->getConnection(getenv('TARGET_DATABASE'))
-);
+class MigrateCommand
+{
+    public static function run(): void
+    {
+        $migrator = new SchemaMigrator(
+            Database::getInstance()->getConnection(getenv('SOURCE_DATABASE')),
+            Database::getInstance()->getConnection(getenv('TARGET_DATABASE'))
+        );
 
-$migrator->migrate();
+        $migrator->migrate();
+    }
+}
