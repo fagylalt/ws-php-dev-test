@@ -4,17 +4,15 @@ namespace Migrations;
 
 use Illuminate\Database\Connection;
 
-require_once "../Config/bootstrap.php";
+require_once '../Config/bootstrap.php';
 
 class SchemaMigrator
 {
-
     private array $clientIdMap = [];
+
     private array $userIdMap = [];
 
-    public function __construct(private readonly Connection $sourceDb, private readonly Connection $targetDb)
-    {
-    }
+    public function __construct(private readonly Connection $sourceDb, private readonly Connection $targetDb) {}
 
     public function migrate(): void
     {
@@ -29,7 +27,7 @@ class SchemaMigrator
             echo "Migration completed successfully.\n";
         } catch (\Exception $e) {
             $this->rollbackTransaction();
-            echo "Migration failed: " . $e->getMessage() . "\n";
+            echo 'Migration failed: '.$e->getMessage()."\n";
         }
     }
 
@@ -48,7 +46,7 @@ class SchemaMigrator
             $this->clientIdMap[$oldId] = $newId;
         }
 
-        echo "Migrated " . count($clients) . " clients.\n";
+        echo 'Migrated '.count($clients)." clients.\n";
     }
 
     private function migrateUsers(): void
@@ -66,7 +64,7 @@ class SchemaMigrator
             $this->userIdMap[$oldId] = $newId;
         }
 
-        echo "Migrated " . count($users) . " users.\n";
+        echo 'Migrated '.count($users)." users.\n";
     }
 
     private function migrateUserClients(): void
@@ -82,15 +80,16 @@ class SchemaMigrator
             $userClientData['auth_user_id'] = $this->userIdMap[$userClient->auth_user_id] ?? null;
             $userClientData['client_id'] = $this->clientIdMap[$userClient->client_id] ?? null;
 
-            if (!$userClientData['auth_user_id'] || !$userClientData['client_id']) {
+            if (! $userClientData['auth_user_id'] || ! $userClientData['client_id']) {
                 echo "Skipping relationship due to missing user or client.\n";
+
                 continue;
             }
 
             $this->targetDb->table('tblusers_clients')->insert($userClientData);
         }
 
-        echo "Migrated " . count($userClients) . " user-client relationships.\n";
+        echo 'Migrated '.count($userClients)." user-client relationships.\n";
     }
 
     private function beginTransaction(): void

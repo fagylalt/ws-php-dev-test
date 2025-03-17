@@ -4,7 +4,6 @@ namespace Seeders;
 
 use Database\Database;
 use Faker\Factory as Faker;
-use Illuminate\Database\Connection;
 
 class ClientSeeder
 {

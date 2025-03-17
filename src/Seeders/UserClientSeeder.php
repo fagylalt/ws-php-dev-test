@@ -12,11 +12,12 @@ class UserClientSeeder
         $faker = Faker::create();
         $db = Database::getInstance()->getConnection(getenv('SOURCE_DATABASE'));
 
-        $userIds =  $db->table('tblusers')->pluck('id')->toArray();
-        $clientIds =  $db->table('tblclients')->pluck('id')->toArray();
+        $userIds = $db->table('tblusers')->pluck('id')->toArray();
+        $clientIds = $db->table('tblclients')->pluck('id')->toArray();
 
         if (empty($userIds) || empty($clientIds)) {
             echo "No users or clients found. Please seed users and clients first.\n";
+
             return;
         }
 

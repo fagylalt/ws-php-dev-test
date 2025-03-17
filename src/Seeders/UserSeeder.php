@@ -4,7 +4,6 @@ namespace Seeders;
 
 use Database\Database;
 use Faker\Factory as Faker;
-use Illuminate\Database\Capsule\Manager as Capsule;
 
 class UserSeeder
 {
