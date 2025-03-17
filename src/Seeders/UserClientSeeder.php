@@ -2,17 +2,18 @@
 
 namespace Seeders;
 
+use Database\Database;
 use Faker\Factory as Faker;
-use Illuminate\Database\Capsule\Manager as Capsule;
 
 class UserClientSeeder
 {
     public static function seed($count = 10)
     {
         $faker = Faker::create();
+        $db = Database::getInstance()->getConnection(getenv('SOURCE_DATABASE'));
 
-        $userIds =  Capsule::connection(getenv('SOURCE_DATABASE'))->table('tblusers')->pluck('id')->toArray();
-        $clientIds =  Capsule::connection(getenv('SOURCE_DATABASE'))->table('tblclients')->pluck('id')->toArray();
+        $userIds =  $db->table('tblusers')->pluck('id')->toArray();
+        $clientIds =  $db->table('tblclients')->pluck('id')->toArray();
 
         if (empty($userIds) || empty($clientIds)) {
             echo "No users or clients found. Please seed users and clients first.\n";
@@ -20,7 +21,7 @@ class UserClientSeeder
         }
 
         for ($i = 0; $i < $count; $i++) {
-            Capsule::connection(getenv('SOURCE_DATABASE'))->table('tblusers_clients')->insert([
+            $db->table('tblusers_clients')->insert([
                 'auth_user_id' => $faker->randomElement($userIds),
                 'client_id' => $faker->randomElement($clientIds),
                 'invite_id' => 0,

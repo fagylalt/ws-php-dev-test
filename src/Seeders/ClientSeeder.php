@@ -2,17 +2,19 @@
 
 namespace Seeders;
 
+use Database\Database;
 use Faker\Factory as Faker;
-use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Database\Connection;
 
 class ClientSeeder
 {
-    public static function seed($count = 10)
+    public static function seed($count = 10): void
     {
         $faker = Faker::create();
+        $db = Database::getInstance()->getConnection(getenv('SOURCE_DATABASE'));
 
         for ($i = 0; $i < $count; $i++) {
-            Capsule::connection(getenv('SOURCE_DATABASE'))->table('tblclients')->insert([
+            $db->table('tblclients')->insert([
                 'uuid' => $faker->uuid,
                 'firstname' => $faker->firstName,
                 'lastname' => $faker->lastName,

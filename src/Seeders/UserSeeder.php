@@ -2,6 +2,7 @@
 
 namespace Seeders;
 
+use Database\Database;
 use Faker\Factory as Faker;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
@@ -10,9 +11,10 @@ class UserSeeder
     public static function seed($count = 10)
     {
         $faker = Faker::create();
+        $db = Database::getInstance()->getConnection(getenv('SOURCE_DATABASE'));
 
         for ($i = 0; $i < $count; $i++) {
-            Capsule::connection(getenv('SOURCE_DATABASE'))->table('tblusers')->insert([
+            $db->table('tblusers')->insert([
                 'first_name' => $faker->firstName,
                 'last_name' => $faker->lastName,
                 'email' => $faker->unique()->safeEmail,
