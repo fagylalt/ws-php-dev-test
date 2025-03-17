@@ -1,6 +1,6 @@
 <?php
 
-include_once 'src/Config/bootstrap.php';
+require_once 'src/Config/bootstrap.php';
 
 use Commands\MigrateCommand;
 use Commands\SeedCommand;
