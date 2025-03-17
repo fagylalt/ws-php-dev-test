@@ -11,9 +11,10 @@ class UserSeeder
     {
         $faker = Faker::create();
         $db = Database::getInstance()->getConnection(getenv('SOURCE_DATABASE'));
+        $records = [];
 
         for ($i = 0; $i < $count; $i++) {
-            $db->table('tblusers')->insert([
+            $records[] = [
                 'first_name' => $faker->firstName,
                 'last_name' => $faker->lastName,
                 'email' => $faker->unique()->safeEmail,
@@ -34,7 +35,9 @@ class UserSeeder
                 'reset_token_expiry' => null,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
-            ]);
+            ];
         }
+        $db->table('tblusers')->insert($records);
+
     }
 }

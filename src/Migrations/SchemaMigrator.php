@@ -4,8 +4,6 @@ namespace Migrations;
 
 use Illuminate\Database\Connection;
 
-require_once '../Config/bootstrap.php';
-
 class SchemaMigrator
 {
     private array $clientIdMap = [];

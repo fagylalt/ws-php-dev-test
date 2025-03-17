@@ -20,7 +20,8 @@
         "Migrations\\": "src/Migrations/",
         "Models\\": "src/Models/",
         "Seeders\\": "src/Seeders/",
-        "Database\\": "src/Database/"
+        "Database\\": "src/Database/",
+        "Commands\\": "src/Commands/"
     }
 }
 
