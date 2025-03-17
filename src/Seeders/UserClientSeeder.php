@@ -49,10 +49,6 @@ class UserClientSeeder
                 'updated_at' => date('Y-m-d H:i:s'),
             ];
         }
-
-        if (! empty($records)) {
-            $db->table('tblusers_clients')->insert($records);
-            echo 'Inserted '.count($records)." user-client relationships into tblusers_clients.\n";
-        }
+        $db->table('tblusers_clients')->insert($records);
     }
 }
