@@ -12,8 +12,10 @@ class ClientSeeder
         $faker = Faker::create();
         $db = Database::getInstance()->getConnection(getenv('SOURCE_DATABASE'));
 
+        $records = [];
+
         for ($i = 0; $i < $count; $i++) {
-            $db->table('tblclients')->insert([
+            $records[] = [
                 'uuid' => $faker->uuid,
                 'firstname' => $faker->firstName,
                 'lastname' => $faker->lastName,
@@ -69,7 +71,10 @@ class ClientSeeder
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
                 'pwresetexpiry' => date('Y-m-d H:i:s'),
-            ]);
+            ];
         }
+
+        $db->table('tblclients')->insert($records);
+
     }
 }
