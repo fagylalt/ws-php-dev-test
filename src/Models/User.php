@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -76,5 +75,4 @@ class User extends Model
         'updated_at' => 'datetime',
         'security_question_id' => 'integer',
     ];
-
 }
