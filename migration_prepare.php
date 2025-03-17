@@ -22,6 +22,7 @@ try {
     echo "Migrated clients, users, and user client relations to the new schema.\n";
 } catch (\Exception $e) {
     echo 'Seed and migration failed: '.$e->getMessage()."\n";
+    exit(1);
 }
 
 exit(0);
