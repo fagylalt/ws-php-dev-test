@@ -28,7 +28,19 @@ $capsule->addConnection([
     'charset'   => 'utf8',
     'collation' => 'utf8_unicode_ci',
     'prefix'    => '',
-]);
+], 'source_db');
+
+$capsule->addConnection([
+    'driver'    => 'mysql',
+    'host'      => getenv('DB_HOST'),
+    'database'  => getenv('TARGET_DATABASE'),
+    'username'  => "root",
+    'password'  => getenv('MYSQL_ROOT_PASSWORD'),
+    'charset'   => 'utf8',
+    'collation' => 'utf8_unicode_ci',
+    'prefix'    => '',
+], 'target_db');
+
 
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
