@@ -16,8 +16,8 @@
     },
     "autoload": {
     "psr-4": {
-        "Migration\\": "src/Migration/",
-        "Model\\": "src/Model/"
+        "Migrations\\": "src/Migrations/",
+        "Models\\": "src/Models/"
     }
 }
 
