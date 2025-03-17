@@ -1,6 +1,6 @@
 <?php
 
-require_once '../Config/consts.php';
+require_once 'consts.php';
 require_once BASE_DIR.'/vendor/autoload.php';
 
 use Database\Database;
